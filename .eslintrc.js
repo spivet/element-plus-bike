@@ -20,5 +20,6 @@ module.exports = {
         allowFirstLine: false,
       },
     }],
+    'vue/no-v-model-argument': 0
   },
 };

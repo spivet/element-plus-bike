@@ -33,7 +33,7 @@
     "commit-msg": "commitlint -E GIT_PARAMS"
   },
   "lint-staged": {
-    "*.{js,ts,vue}": "npm run eslint"
+    "*.{js,ts,vue}": "eslint"
   },
   "commitlint": {
     "extends": [
