@@ -13,8 +13,7 @@
         <el-col
           v-for="(field, index) in fields"
           :key="field.name"
-          class="table-search__col"
-          :class="{'form__item--hidden': shouldCollapse(index)}"
+          :class="['table-search__col', shouldCollapse(index) ? 'form__item--hidden' : '']"
           :xl="6"
           :lg="8"
           :md="12"
@@ -84,7 +83,7 @@ const DifferentSizeData = [
 ];
 
 export default {
-  name: 'LichiProTableSearch',
+  name: 'ElProTableSearch',
   props: {
     modelValue: {
       type: Object,
