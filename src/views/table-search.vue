@@ -4,14 +4,15 @@
       v-model="searchForm"
       :fields="fields"
       @search="handleSearch"
+      @reset="handleReset"
     />
   </PageBlock>
 </template>
 
 <script setup>
-import PageBlock from '@/components/page-block.vue'
+import PageBlock from '@/components/page-block.vue';
 
-const searchForm = {}
+const searchForm = {};
 const fields = [
   {
     name: 'name',
@@ -56,6 +57,9 @@ const fields = [
   },
 ];
 const handleSearch = (form) => {
-    console.log(form)
-}
+  console.log(form);
+};
+const handleReset = (form) => {
+  console.log(form);
+};
 </script>

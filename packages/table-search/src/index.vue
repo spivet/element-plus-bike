@@ -5,7 +5,7 @@
       class="table-search__form"
       :model="formData"
       size="small"
-      label-width="128px"
+      label-width="100px"
       v-bind="formProps"
     >
       <!-- 查询表单模块 -->
@@ -14,10 +14,10 @@
           v-for="(field, index) in fields"
           :key="field.name"
           :class="['table-search__col', shouldCollapse(index) ? 'form__item--hidden' : '']"
-          :xl="6"
-          :lg="8"
-          :md="12"
-          :sm="24"
+          :lg="DifferentSizeData.lg.span"
+          :md="DifferentSizeData.md.span"
+          :sm="DifferentSizeData.sm.span"
+          :xs="DifferentSizeData.xs.span"
         >
           <el-form-item
             :label="field.label"
@@ -67,83 +67,72 @@
 </template>
 
 <script>
-import { ref, watchEffect } from 'vue';
-
-const FieldsType = {
-  INPUT: 'input',
-  SELECT: 'select',
-};
-// 不同尺寸所对应的页面宽度和每行 ElFormItem 个数
-const DifferentSizeData = [
-  { width: 1900, quantity: 4 }, // xl
-  { width: 1200, quantity: 3 }, // large
-  { width: 992, quantity: 2 }, // middle
-  { width: 768, quantity: 1 }, // small
-  { width: 0, quantity: 1 }, // less than small
-];
-
 export default {
   name: 'ElProTableSearch',
-  props: {
-    modelValue: {
-      type: Object,
-      default: () => ({}),
-    },
-    formProps: {
-      type: Object,
-      default: () => ({}),
-    },
-    fields: {
-      type: Array,
-      default: () => [],
-    },
-    defaultCollapse: {
-      type: Boolean,
-      default: false,
-    },
+};
+</script>
+
+<script setup>
+import { defineProps, defineEmits, computed, watchEffect, ref } from 'vue';
+import {FieldsType, DifferentSizeData} from './constant';
+
+const props = defineProps({
+  modelValue: {
+    type: Object,
+    default: () => ({}),
   },
-  emits: ['search', 'reset', 'update:modelValue'],
-  setup(props, { emit }) {
-    const formData = ref({ ...props.modelValue });
-    watchEffect(() => {
-      emit('update:modelValue', formData.value);
-    });
-    return { formData };
+  formProps: {
+    type: Object,
+    default: () => ({}),
   },
-  data() {
-    return {
-      FieldsType,
-      isCollapse: this.defaultCollapse,
-    };
+  fields: {
+    type: Array,
+    default: () => [],
   },
-  computed: {
-    showCollapseBtn() {
-      const quantity = this.getPerLineItemQuantity();
-      return this.fields.length >= quantity;
-    },
-  },
-  methods: {
-    shouldCollapse(index) {
-      const quantity = this.getPerLineItemQuantity();
-      return index > (quantity - 2) && this.isCollapse;
-    },
-    getPerLineItemQuantity() {
-      const documentScrollWidth = document.documentElement.scrollWidth;
-      const size = DifferentSizeData.find((item) => documentScrollWidth >= item.width);
-      return size.quantity;
-    },
-    toggleCollapse() {
-      this.isCollapse = !this.isCollapse;
-    },
-    handleSearch() {
-      this.$emit('search', this.formData);
-    },
-    handleReset() {
-      this.$refs.searchForm.resetFields();
-      // this.formData = {};
-      this.$emit('reset', this.formData);
-    },
-  },
+  defaultCollapse: {
+    type: Boolean,
+    default: false,
+  }
+});
+
+const emit = defineEmits(['search', 'reset', 'update:modelValue']);
+const formData = ref({ ...props.modelValue });
+watchEffect(() => {
+  emit('update:modelValue', formData.value);
+});
+
+/**
+ * 处理表单展开和收起
+ */
+const isCollapse = ref(props.defaultCollapse);
+// 获取每一行表单字段的数量
+const getPerLineFieldQuantity = () => {
+  const documentScrollWidth = document.documentElement.scrollWidth;
+  const size = Object.values(DifferentSizeData).find((item) => documentScrollWidth >= item.width);
+  return size.quantity;
+};
+const toggleCollapse = () => {
+  isCollapse.value = !isCollapse.value;
+};
+const shouldCollapse = (index) => {
+  const quantity = getPerLineFieldQuantity();
+  return index > (quantity - 2) && isCollapse.value;
+};
+const showCollapseBtn = computed(() => {
+  const quantity = getPerLineFieldQuantity();
+  return props.fields.length >= quantity;
+});
+
+/**
+ * 处理表单查询和搜索
+ */
+const searchForm = ref('searchForm');
+const handleSearch = () => {
+  emit('search', formData.value);
+};
+const handleReset = () => {
+  searchForm.value.resetFields();
+  emit('reset', formData.value);
 };
 </script>
 
