@@ -1,19 +1,19 @@
 <template>
-  <div class="table-search-root">
+  <div class="el-pro-table-search-root">
     <el-form
       ref="searchForm"
-      class="table-search__form"
+      class="el-pro-table-search__form"
       :model="formData"
       size="small"
       label-width="100px"
       v-bind="formProps"
     >
       <!-- 查询表单模块 -->
-      <el-row class="table-search__row">
+      <el-row class="el-pro-table-search__row">
         <el-col
           v-for="(field, index) in fields"
           :key="field.name"
-          :class="['table-search__col', shouldCollapse(index) ? 'form__item--hidden' : '']"
+          :class="['el-pro-table-search__col', shouldCollapse(index) ? 'el-pro-form__item--hidden' : '']"
           :lg="DifferentSizeData.lg.span"
           :md="DifferentSizeData.md.span"
           :sm="DifferentSizeData.sm.span"
@@ -41,7 +41,7 @@
         </el-col>
 
         <!-- 操作按钮模块 -->
-        <div class="table-search__btns">
+        <div class="el-pro-table-search__btns">
           <el-button
             type="primary"
             size="small"
@@ -54,7 +54,7 @@
           </el-button>
           <span
             v-if="showCollapseBtn"
-            class="table-search__btn--filter ml-28"
+            class="el-pro-table-search__btn--filter ml-28"
             @click="toggleCollapse"
           >
             {{ isCollapse ? '展开' : '收起' }}
@@ -89,9 +89,9 @@ const props = defineProps({
     type: Array,
     default: () => [],
   },
-  defaultCollapse: {
+  collapse: {
     type: Boolean,
-    default: false,
+    default: true,
   }
 });
 
@@ -104,7 +104,7 @@ watchEffect(() => {
 /**
  * 处理表单展开和收起
  */
-const isCollapse = ref(props.defaultCollapse);
+const isCollapse = ref(props.collapse);
 // 获取每一行表单字段的数量
 const getPerLineFieldQuantity = () => {
   const documentScrollWidth = document.documentElement.scrollWidth;
@@ -136,52 +136,51 @@ const handleReset = () => {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 /**  查询表单模块样式  **/
-.table-search__form {
+.el-pro-table-search__form {
   display: flex;
   flex-wrap: wrap;
 }
 
-.table-search__row {
+.el-pro-table-search__row {
   width: 100%;
 }
 
-.table-search__col:last-of-type {
+.el-pro-table-search__col:last-of-type {
   margin-bottom: 0;
 }
 
-:deep(.el-form-item__label) {
-  width: 128px;
+.el-form-item__label {
   white-space: nowrap;
   overflow: hidden;
 }
 
-:deep(.el-select),
-:deep(.el-date-editor--daterange.el-input),
-:deep(.el-date-editor--daterange.el-input__inner),
-:deep(.el-date-editor--timerange.el-input),
-:deep(.el-date-editor--timerange.el-input__inner),
-:deep(.el-date-editor--datetimerange.el-input),
-:deep(.el-date-editor--datetimerange.el-input__inner) {
+.el-select,
+.el-date-editor--daterange.el-input,
+.el-date-editor--daterange.el-input__inner,
+.el-date-editor--timerange.el-input,
+.el-date-editor--timerange.el-input__inner,
+.el-date-editor--datetimerange.el-input,
+.el-date-editor--datetimerange.el-input__inner {
   width: 100%;
 }
 
-:deep(.el-date-editor .el-range-separator) {
+.el-date-editor .el-range-separator {
   width: auto;
 }
 
-.form__item--hidden {
+.el-pro-form__item--hidden {
   display: none;
 }
 
 /**  操作按钮模块样式  **/
-.table-search__btns {
+.el-pro-table-search__btns {
   margin-left: auto;
   margin-bottom: 16px;
 }
 
-.table-search__btn--filter {
+.el-pro-table-search__btn--filter {
   font-size: 14px;
   color: #606266;
   cursor: pointer;
