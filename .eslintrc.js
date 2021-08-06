@@ -11,6 +11,10 @@ module.exports = {
     'plugin:vue/vue3-recommended',
   ],
   rules: {
+    "indent": ["error", 2],
+    "no-multi-spaces": "error",
+    "semi": ["error", "always"],
+    "no-trailing-spaces": "error",
     'vue/max-attributes-per-line': ['error', {
       singleline: 2,
       multiline: {
