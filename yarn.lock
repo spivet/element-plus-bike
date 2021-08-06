@@ -526,37 +526,37 @@
     html-tags "^3.1.0"
     svg-tags "^1.0.0"
 
-"@vue/compiler-core@3.1.5":
-  version "3.1.5"
-  resolved "https://npm.ops.yunlizhi.cn/@vue%2fcompiler-core/-/compiler-core-3.1.5.tgz#298f905b6065d6d81ff63756f98c60876b393c87"
-  integrity sha1-KY+QW2Bl1tgf9jdW+Yxgh2s5PIc=
+"@vue/compiler-core@3.2.0-beta.7":
+  version "3.2.0-beta.7"
+  resolved "https://npm.ops.yunlizhi.cn/@vue%2fcompiler-core/-/compiler-core-3.2.0-beta.7.tgz#bb551e99e207c3e694bd6b283cb5a2a2aae7f521"
+  integrity sha1-u1UemeIHw+aUvWsoPLWioqrn9SE=
   dependencies:
     "@babel/parser" "^7.12.0"
     "@babel/types" "^7.12.0"
-    "@vue/shared" "3.1.5"
+    "@vue/shared" "3.2.0-beta.7"
     estree-walker "^2.0.1"
     source-map "^0.6.1"
 
-"@vue/compiler-dom@3.1.5":
-  version "3.1.5"
-  resolved "https://npm.ops.yunlizhi.cn/@vue%2fcompiler-dom/-/compiler-dom-3.1.5.tgz#cbb97020c62a5faa3fbc2a97916bd98041ac9856"
-  integrity sha1-y7lwIMYqX6o/vCqXkWvZgEGsmFY=
+"@vue/compiler-dom@3.2.0-beta.7":
+  version "3.2.0-beta.7"
+  resolved "https://npm.ops.yunlizhi.cn/@vue%2fcompiler-dom/-/compiler-dom-3.2.0-beta.7.tgz#2099797206b5f773e949801dd1d6a3bd73d174ce"
+  integrity sha1-IJl5cga193PpSYAd0dajvXPRdM4=
   dependencies:
-    "@vue/compiler-core" "3.1.5"
-    "@vue/shared" "3.1.5"
+    "@vue/compiler-core" "3.2.0-beta.7"
+    "@vue/shared" "3.2.0-beta.7"
 
-"@vue/compiler-sfc@^3.0.5":
-  version "3.1.5"
-  resolved "https://npm.ops.yunlizhi.cn/@vue%2fcompiler-sfc/-/compiler-sfc-3.1.5.tgz#e61e54f3a963b0f4a8e523fbb8632390dc52b0d6"
-  integrity sha1-5h5U86ljsPSo5SP7uGMjkNxSsNY=
+"@vue/compiler-sfc@3.2.0-beta.7":
+  version "3.2.0-beta.7"
+  resolved "https://npm.ops.yunlizhi.cn/@vue%2fcompiler-sfc/-/compiler-sfc-3.2.0-beta.7.tgz#6f04a2b37e358afcd7791b68efaeffd0bf198ddd"
+  integrity sha1-bwSis341ivzXeRto767/0L8Zjd0=
   dependencies:
     "@babel/parser" "^7.13.9"
     "@babel/types" "^7.13.0"
     "@types/estree" "^0.0.48"
-    "@vue/compiler-core" "3.1.5"
-    "@vue/compiler-dom" "3.1.5"
-    "@vue/compiler-ssr" "3.1.5"
-    "@vue/shared" "3.1.5"
+    "@vue/compiler-core" "3.2.0-beta.7"
+    "@vue/compiler-dom" "3.2.0-beta.7"
+    "@vue/compiler-ssr" "3.2.0-beta.7"
+    "@vue/shared" "3.2.0-beta.7"
     consolidate "^0.16.0"
     estree-walker "^2.0.1"
     hash-sum "^2.0.0"
@@ -568,47 +568,47 @@
     postcss-selector-parser "^6.0.4"
     source-map "^0.6.1"
 
-"@vue/compiler-ssr@3.1.5":
-  version "3.1.5"
-  resolved "https://npm.ops.yunlizhi.cn/@vue%2fcompiler-ssr/-/compiler-ssr-3.1.5.tgz#f068652774293256a1e53084bed48a67682df9d2"
-  integrity sha1-8GhlJ3QpMlah5TCEvtSKZ2gt+dI=
+"@vue/compiler-ssr@3.2.0-beta.7":
+  version "3.2.0-beta.7"
+  resolved "https://npm.ops.yunlizhi.cn/@vue%2fcompiler-ssr/-/compiler-ssr-3.2.0-beta.7.tgz#1a46abf8bcd3196c2c9ad149063c00c4619f1e24"
+  integrity sha1-Gkar+LzTGWwsmtFJBjwAxGGfHiQ=
   dependencies:
-    "@vue/compiler-dom" "3.1.5"
-    "@vue/shared" "3.1.5"
+    "@vue/compiler-dom" "3.2.0-beta.7"
+    "@vue/shared" "3.2.0-beta.7"
 
 "@vue/devtools-api@^6.0.0-beta.14":
   version "6.0.0-beta.15"
   resolved "https://npm.ops.yunlizhi.cn/@vue%2fdevtools-api/-/devtools-api-6.0.0-beta.15.tgz#ad7cb384e062f165bcf9c83732125bffbc2ad83d"
   integrity sha1-rXyzhOBi8WW8+cg3MhJb/7wq2D0=
 
-"@vue/reactivity@3.1.5":
-  version "3.1.5"
-  resolved "https://npm.ops.yunlizhi.cn/@vue%2freactivity/-/reactivity-3.1.5.tgz#dbec4d9557f7c8f25c2635db1e23a78a729eb991"
-  integrity sha1-2+xNlVf3yPJcJjXbHiOninKeuZE=
+"@vue/reactivity@3.2.0-beta.7":
+  version "3.2.0-beta.7"
+  resolved "https://npm.ops.yunlizhi.cn/@vue%2freactivity/-/reactivity-3.2.0-beta.7.tgz#06c916315f3b74ae640040ddb75972da29467f84"
+  integrity sha1-BskWMV87dK5kAEDdt1ly2ilGf4Q=
   dependencies:
-    "@vue/shared" "3.1.5"
+    "@vue/shared" "3.2.0-beta.7"
 
-"@vue/runtime-core@3.1.5":
-  version "3.1.5"
-  resolved "https://npm.ops.yunlizhi.cn/@vue%2fruntime-core/-/runtime-core-3.1.5.tgz#a545b7f146092929cb5e833e85439150f17ac87b"
-  integrity sha1-pUW38UYJKSnLXoM+hUORUPF6yHs=
+"@vue/runtime-core@3.2.0-beta.7":
+  version "3.2.0-beta.7"
+  resolved "https://npm.ops.yunlizhi.cn/@vue%2fruntime-core/-/runtime-core-3.2.0-beta.7.tgz#52068f50bd72d5504ab0459051d5f9a9e13957f6"
+  integrity sha1-UgaPUL1y1VBKsEWQUdX5qeE5V/Y=
   dependencies:
-    "@vue/reactivity" "3.1.5"
-    "@vue/shared" "3.1.5"
+    "@vue/reactivity" "3.2.0-beta.7"
+    "@vue/shared" "3.2.0-beta.7"
 
-"@vue/runtime-dom@3.1.5":
-  version "3.1.5"
-  resolved "https://npm.ops.yunlizhi.cn/@vue%2fruntime-dom/-/runtime-dom-3.1.5.tgz#4fa28947d408aa368fa17ea0edc1beb9af1472a1"
-  integrity sha1-T6KJR9QIqjaPoX6g7cG+ua8UcqE=
+"@vue/runtime-dom@3.2.0-beta.7":
+  version "3.2.0-beta.7"
+  resolved "https://npm.ops.yunlizhi.cn/@vue%2fruntime-dom/-/runtime-dom-3.2.0-beta.7.tgz#6776548f93ecf4b68c5450301e9e535923c0cf64"
+  integrity sha1-Z3ZUj5Ps9LaMVFAwHp5TWSPAz2Q=
   dependencies:
-    "@vue/runtime-core" "3.1.5"
-    "@vue/shared" "3.1.5"
+    "@vue/runtime-core" "3.2.0-beta.7"
+    "@vue/shared" "3.2.0-beta.7"
     csstype "^2.6.8"
 
-"@vue/shared@3.1.5":
-  version "3.1.5"
-  resolved "https://npm.ops.yunlizhi.cn/@vue%2fshared/-/shared-3.1.5.tgz#74ee3aad995d0a3996a6bb9533d4d280514ede03"
-  integrity sha1-dO46rZldCjmWpruVM9TSgFFO3gM=
+"@vue/shared@3.2.0-beta.7":
+  version "3.2.0-beta.7"
+  resolved "https://npm.ops.yunlizhi.cn/@vue%2fshared/-/shared-3.2.0-beta.7.tgz#0bce776271f329e6582fcda00d61d4bcf1c60b52"
+  integrity sha1-C853YnHzKeZYL82gDWHUvPHGC1I=
 
 JSONStream@^1.0.4:
   version "1.3.5"
@@ -2741,14 +2741,14 @@ vue-router@^4.0.10:
   dependencies:
     "@vue/devtools-api" "^6.0.0-beta.14"
 
-vue@^3.0.5:
-  version "3.1.5"
-  resolved "https://npm.ops.yunlizhi.cn/vue/-/vue-3.1.5.tgz#12879b11d0685ee4478c8869551799630a52f9fe"
-  integrity sha1-EoebEdBoXuRHjIhpVReZYwpS+f4=
+vue@3.2.0-beta.7:
+  version "3.2.0-beta.7"
+  resolved "https://npm.ops.yunlizhi.cn/vue/-/vue-3.2.0-beta.7.tgz#4ec77be552e840651aa175b88e7f03faf32da233"
+  integrity sha1-Tsd75VLoQGUaoXW4jn8D+vMtojM=
   dependencies:
-    "@vue/compiler-dom" "3.1.5"
-    "@vue/runtime-dom" "3.1.5"
-    "@vue/shared" "3.1.5"
+    "@vue/compiler-dom" "3.2.0-beta.7"
+    "@vue/runtime-dom" "3.2.0-beta.7"
+    "@vue/shared" "3.2.0-beta.7"
 
 which@^1.2.9:
   version "1.3.1"
