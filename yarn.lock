@@ -695,6 +695,11 @@ anymatch@~3.1.2:
     normalize-path "^3.0.0"
     picomatch "^2.0.4"
 
+apite@^1.2.5:
+  version "1.2.5"
+  resolved "https://npm.ops.yunlizhi.cn/apite/-/apite-1.2.5.tgz#186f45030e1f38e313c2f233dbf33e94eff60947"
+  integrity sha1-GG9FAw4fOOMTwvIz2/M+lO/2CUc=
+
 argparse@^1.0.7:
   version "1.0.10"
   resolved "https://npm.ops.yunlizhi.cn/argparse/-/argparse-1.0.10.tgz#bcd6791ea5ae09725e17e5ad988134cd40b3d911"
@@ -721,6 +726,13 @@ async-validator@^3.4.0:
   version "3.5.2"
   resolved "https://npm.ops.yunlizhi.cn/async-validator/-/async-validator-3.5.2.tgz#68e866a96824e8b2694ff7a831c1a25c44d5e500"
   integrity sha1-aOhmqWgk6LJpT/eoMcGiXETV5QA=
+
+axios@^0.21.1:
+  version "0.21.1"
+  resolved "https://npm.ops.yunlizhi.cn/axios/-/axios-0.21.1.tgz#22563481962f4d6bde9a76d516ef0e5d3c09b2b8"
+  integrity sha1-IlY0gZYvTWvemnbVFu8OXTwJsrg=
+  dependencies:
+    follow-redirects "^1.10.0"
 
 balanced-match@^1.0.0:
   version "1.0.2"
@@ -1337,6 +1349,11 @@ flatted@^3.1.0:
   version "3.2.2"
   resolved "https://npm.ops.yunlizhi.cn/flatted/-/flatted-3.2.2.tgz#64bfed5cb68fe3ca78b3eb214ad97b63bedce561"
   integrity sha1-ZL/tXLaP48p4s+shStl7Y77c5WE=
+
+follow-redirects@^1.10.0:
+  version "1.14.1"
+  resolved "https://npm.ops.yunlizhi.cn/follow-redirects/-/follow-redirects-1.14.1.tgz#d9114ded0a1cfdd334e164e6662ad02bfd91ff43"
+  integrity sha1-2RFN7Qoc/dM04WTmZirQK/2R/0M=
 
 fs-extra@^10.0.0:
   version "10.0.0"
