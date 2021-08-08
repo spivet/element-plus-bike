@@ -1,16 +1,17 @@
-
-import ElProTableSearch from './table-search'
+import ElProTable from './table';
+import ElProTableSearch from './table-search';
 
 const components = [
-    ElProTableSearch
-]
+  ElProTable,
+  ElProTableSearch
+];
 
 const install = (app) => {
-    components.forEach(item => {
-        app.component(item.name, item)
-    })
-}
+  components.forEach(item => {
+    app.component(item.name, item);
+  });
+};
 
 export default {
-    install
-}
+  install
+};
