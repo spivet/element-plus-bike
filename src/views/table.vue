@@ -1,6 +1,7 @@
 <template>
   <PageBlock>
-    <ElProTable
+    <ElProTableList
+      :loading="loading"
       :columns="columns"
       :data="tableData"
       :pagination="pagination"
@@ -53,10 +54,12 @@ const pagination = ref({
   pageSize: 10,
 });
 
+const loading = ref(true);
 const tableData = ref([]);
 axios.get('/api/list').then(res => {
   const data = res.data;
   tableData.value = data.list;
   pagination.value.total = data.total;
+  loading.value = false;
 });
 </script>

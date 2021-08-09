@@ -1,9 +1,9 @@
-import ElProTable from './table';
-import ElProTableSearch from './table-search';
+import ElProTableList from './table-list';
+import ElProTableSearchForm from './table-search-form';
 
 const components = [
-  ElProTable,
-  ElProTableSearch
+  ElProTableList,
+  ElProTableSearchForm
 ];
 
 const install = (app) => {

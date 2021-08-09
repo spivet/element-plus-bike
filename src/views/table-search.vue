@@ -1,6 +1,6 @@
 <template>
   <PageBlock>
-    <ElProTableSearch
+    <ElProTableSearchForm
       v-model="searchForm"
       :fields="fields"
       @search="handleSearch"

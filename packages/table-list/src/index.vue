@@ -39,7 +39,7 @@ import useTable from './uses/useTable';
 import usePagination from './uses/usePagination';
 
 export default {
-  name: 'ElProTable',
+  name: 'ElProTableList',
   inheritAttrs: false,
   props: {
     loading: {
