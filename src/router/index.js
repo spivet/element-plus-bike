@@ -9,6 +9,11 @@ const router = createRouter({
       component: () => import('../views/table-search.vue'),
     },
     {
+      path: '/table-list',
+      name: 'table',
+      component: () => import('../views/table-list.vue'),
+    },
+    {
       path: '/table',
       name: 'table',
       component: () => import('../views/table.vue'),
