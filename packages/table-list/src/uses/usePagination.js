@@ -6,8 +6,6 @@ export default function usePagination($emit, pagination) {
     return {
       background: true,
       layout: 'prev, pager, next, sizes, jumper',
-      currentPage: paginationVal.page,
-      pageSize: paginationVal.size,
       ...paginationVal,
     };
   });
@@ -15,13 +13,13 @@ export default function usePagination($emit, pagination) {
   const handleSizeChange = (pageSize) => {
     $emit('update:pagination', {
       ...pagination.value,
-      size: pageSize,
+      pageSize,
     });
   };
   const handleCurrentChange = (currentPage) => {
     $emit('update:pagination', {
       ...pagination.value,
-      page: currentPage,
+      currentPage,
     });
   };
 
