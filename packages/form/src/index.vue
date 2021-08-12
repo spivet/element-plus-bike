@@ -28,7 +28,7 @@
             <component
               :is="field.component"
               v-else
-              v-model.number="formData[field.prop]"
+              v-model="formData[field.prop]"
               v-bind="field.componentAttrs"
             >
               <template v-if="field.type === FieldsType.SELECT">
