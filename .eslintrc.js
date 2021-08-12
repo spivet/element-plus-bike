@@ -10,6 +10,11 @@ module.exports = {
     'alloy/vue',
     'plugin:vue/vue3-recommended',
   ],
+  globals: {
+    'defineEmits': 'readonly',
+    'defineProps': 'readonly',
+    'defineExpose': 'readonly'
+  },
   rules: {
     "indent": ["error", 2],
     "no-multi-spaces": "error",

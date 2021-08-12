@@ -5,7 +5,7 @@
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview",
-    "eslint": "eslint --ext .jsx,.js,.vue src"
+    "eslint": "eslint --ext .jsx,.js,.vue src packages"
   },
   "dependencies": {
     "axios": "^0.21.1",
