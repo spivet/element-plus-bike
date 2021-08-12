@@ -24,8 +24,10 @@
             :prop="field.prop"
             v-bind="field.formItemAttrs"
           >
+            <slot v-if="$slots[field.prop]" :name="field.name" />
             <component
               :is="field.component"
+              v-else
               v-model.number="formData[field.prop]"
               v-bind="field.componentAttrs"
             >
