@@ -1,7 +1,7 @@
-import ElProTableList from './src/index.vue';
+import DmTable from './src/index.vue';
 
-ElProTableList.install = (app) => {
-  app.component(ElProTableList.name, ElProTableList);
+DmTable.install = (app) => {
+  app.component(DmTable.name, DmTable);
 };
 
-export default ElProTableList;
+export default DmTable;
