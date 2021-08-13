@@ -1,13 +1,11 @@
-import ElProTable from './table';
-import ElProTableList from './table-list';
-import ElProTableSearchForm from './table-search-form';
+import DmCrud from './crud';
 import DmForm from './form';
+import DmTable from './table';
 
 const components = [
-  ElProTable,
-  ElProTableList,
-  ElProTableSearchForm,
-  DmForm
+  DmCrud,
+  DmForm,
+  DmTable,
 ];
 
 const install = (app) => {
