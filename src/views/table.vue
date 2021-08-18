@@ -1,56 +1,79 @@
 <template>
-  <ElProTable
-    :fields="fields"
-    :columns="columns"
-    :request="fetchData"
-    :table-data="tableData"
-    :total="total"
-  />
+  <div class="table-list-root">
+    <el-card class="mb-20">
+      <DmForm
+        v-model="searchForm"
+        :inline="true"
+        :fields="fields"
+        @submit="onSubmit"
+        @reset="onReset"
+      />
+    </el-card>
+
+    <el-card>
+      <DmTable
+        v-model:pagination="pagination"
+        :loading="loading"
+        :columns="columns"
+        :data="data"
+      >
+        <slot :name="field.prop" :row="scope.row" />
+      </DmTable>
+    </el-card>
+  </div>
 </template>
 
 <script setup>
 import {ref} from 'vue';
 import axios from 'axios';
+import {useCrud} from '../../packages';
 
 const fields = [
   {
-    name: 'name',
+    prop: 'name',
     label: '系统名称',
-    type: 'input',
-    props: {
+    component: 'el-input',
+    modifier: 'number',
+    componentAttrs: {
       placeholder: '请输入系统名称',
     },
+    formItem: {
+      rules:[
+        { required: true, message: '年龄不能为空'},
+        { type: 'number', message: '年龄必须为数字值'}
+      ]
+    }
   },
   {
-    name: 'ip',
+    prop: 'ip',
     label: '系统地址',
-    type: 'input',
+    component: 'el-input',
     props: {
       placeholder: '请输入系统名称',
     },
   },
   {
-    name: 'systemCode',
+    prop: 'systemCode',
     label: '系统类型',
-    type: 'input',
-    props: {
+    component: 'el-input',
+    componentAttrs: {
       placeholder: '请输入系统名称',
     },
   },
   {
-    name: 'status',
+    prop: 'status',
     label: '状态',
-    type: 'select',
+    component: 'el-select',
     options: [
       {label: '开启', value: 0},
       {label: '关闭', value: 1}
     ]
   },
   {
-    name: 'name4',
+    prop: 'prop4',
     label: '系统名称',
-    type: 'input',
-    props: {
+    component: 'el-input',
+    componentAttrs: {
       placeholder: '请输入系统名称',
     },
   },
@@ -89,14 +112,32 @@ const columns = [
   },
 ];
 
-const total = ref(0);
+const searchForm = ref({});
+const pagination = ref({
+  total: 0,
+  pageSize: 10,
+  currentPage: 1,
+});
 
-const tableData = ref([]);
 const fetchData = async (query, pagination) => {
-  return axios.get('/api/list').then(res => {
-    const data = res.data;
-    tableData.value = data.list;
-    total.value = data.total;
-  });
+  const res = await getList();
+  const data = res.data;
+
+  return {
+    tableData: data.list,
+    total: data.total
+  };
 };
+
+const {data, loading, onSubmit, onReset} = useCrud(pagination, fetchData);
+
+function getList() {
+  return axios.get('/api/list');
+}
 </script>
+
+<style>
+.mb-20 {
+  margin-bottom: 20px;
+}
+</style>

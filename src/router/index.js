@@ -18,6 +18,11 @@ const router = createRouter({
       name: 'table',
       component: () => import('../views/table.vue'),
     },
+    {
+      path: '/dm-form',
+      name: 'dm-form',
+      component: () => import('../views/dm-form.vue'),
+    },
   ],
 });
 
