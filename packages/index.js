@@ -17,3 +17,5 @@ const install = (app) => {
 export default {
   install
 };
+
+export * from './uses';

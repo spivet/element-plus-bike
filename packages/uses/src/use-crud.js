@@ -1,6 +1,6 @@
 import { ref, watch } from 'vue';
 
-export default function useCrud(pagination, request) {
+export function useCrud(pagination, request) {
   const initPagination = JSON.parse(JSON.stringify(pagination.value));
 
   const data = ref([]);
