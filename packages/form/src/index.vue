@@ -45,7 +45,7 @@
 
         <!-- 操作按钮模块 -->
         <FormOperation
-          v-if="inline"
+          v-if="inline && showOperation"
           ref="formOperation"
           :fields-num="fields.length"
           :collapse="collapse"
@@ -58,7 +58,7 @@
 
       <!-- 操作按钮模块 -->
       <FormOperation
-        v-if="!inline"
+        v-if="!inline && showOperation"
         ref="formOperation"
         :fields-num="fields.length"
         :collapse="collapse"
@@ -90,6 +90,10 @@ const props = defineProps({
   inline: {
     type: Boolean,
     default: false,
+  },
+  showOperation: {
+    type: Boolean,
+    default: true,
   },
   formProps: {
     type: Object,
