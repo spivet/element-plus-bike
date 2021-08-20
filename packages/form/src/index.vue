@@ -31,7 +31,7 @@
               v-model="formData[field.prop]"
               v-bind="field.componentAttrs"
             >
-              <template v-if="field.type === FieldsType.SELECT">
+              <template v-if="field.component === FieldsType.SELECT">
                 <el-option
                   v-for="option in field.options"
                   :key="option.value"
