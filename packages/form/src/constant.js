@@ -1,8 +1,3 @@
-export const FieldsType = {
-  INPUT: 'el-input',
-  SELECT: 'el-select',
-};
-
 // 不同尺寸所对应的页面宽度和每行 ElFormItem 个数
 export const DifferentSizeData = {
   lg: { width: 1200, quantity: 4, span: 6 }, // large

@@ -31,14 +31,12 @@
               v-model="formData[field.prop]"
               v-bind="field.componentAttrs"
             >
-              <template v-if="field.component === FieldsType.SELECT">
-                <el-option
-                  v-for="option in field.options"
-                  :key="option.value"
-                  :label="option.label"
-                  :value="option.value"
-                />
-              </template>
+              <component
+                :is="field.subComponent"
+                v-for="option in field.options"
+                :key="option.value"
+                v-bind="option"
+              />
             </component>
           </el-form-item>
         </el-col>
@@ -80,7 +78,7 @@ export default {
 <script setup>
 import { watchEffect, ref } from 'vue';
 import FormOperation from './form-operation.vue';
-import {FieldsType, DifferentSizeData} from './constant';
+import { DifferentSizeData } from './constant';
 
 const props = defineProps({
   modelValue: {
@@ -126,7 +124,7 @@ watchEffect(() => {
 const formOperation = ref(null);
 let shouldCollapse = ref(() => {});
 watchEffect(() => {
-  shouldCollapse.value = formOperation.value.shouldCollapse;
+  shouldCollapse.value = formOperation.value?.shouldCollapse;
 }, {flush: 'post'});
 
 const searchForm = ref('searchForm');
@@ -137,6 +135,10 @@ const handleReset = () => {
   searchForm.value.resetFields();
   emit('reset', formData.value);
 };
+
+defineExpose({
+  validate: searchForm.value.validate
+});
 </script>
 
 <style lang="scss">
