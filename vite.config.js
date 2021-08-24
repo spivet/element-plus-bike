@@ -1,4 +1,5 @@
 import { defineConfig } from 'vite';
+import { createPlugin, vueDocFiles } from 'vite-plugin-vuedoc';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import { vite2Ext } from "apite";
@@ -8,7 +9,10 @@ const path = require('path');
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    vue(),
+    createPlugin({}),
+    vue({
+      include: [...vueDocFiles] // 2. Must include .md | .vd files
+    }),
     vueJsx({}),
     vite2Ext({})
   ],

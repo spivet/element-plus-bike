@@ -23,6 +23,11 @@ const router = createRouter({
       name: 'dm-form',
       component: () => import('../views/dm-form.vue'),
     },
+    {
+      path: '/form',
+      name: 'form',
+      component: () => import('packages/form/index.md'),
+    },
   ],
 });
 

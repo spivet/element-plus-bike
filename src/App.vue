@@ -1,6 +1,10 @@
 <template>
-  <router-view />
+  <AppLayout />
 </template>
+
+<script setup>
+import AppLayout from "./components/AppLayout.vue";
+</script>
 
 <style>
 * {
@@ -18,6 +22,6 @@ body {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #f6f8fa;
+  background-color: #fff;
 }
 </style>
