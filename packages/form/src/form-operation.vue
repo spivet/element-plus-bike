@@ -12,7 +12,7 @@
       重置
     </el-button>
     <span
-      v-if="showToggleBtn"
+      v-if="showCollapseBtn"
       class="dm-form__btn--filter ml-28"
       @click="toggleCollapse"
     >
@@ -28,8 +28,7 @@ export default {
 };
 </script>
 <script setup>
-import {ref, computed} from 'vue';
-import {DifferentSizeData} from './constant';
+import {ref} from 'vue';
 
 const props = defineProps({
   submitBtnText: {
@@ -53,20 +52,6 @@ const emit = defineEmits(['submit', 'reset']);
 
 const isCollapse = ref(props.collapse);
 
-// 获取每一行表单字段的数量
-const getPerLineFieldQuantity = () => {
-  const documentScrollWidth = document.documentElement.scrollWidth;
-  const size = Object.values(DifferentSizeData).find((item) => documentScrollWidth >= item.width);
-  return size.quantity;
-};
-const shouldCollapse = (index) => {
-  const quantity = getPerLineFieldQuantity();
-  return index > (quantity - 2) && isCollapse.value;
-};
-const showToggleBtn = computed(() => {
-  const quantity = getPerLineFieldQuantity();
-  return props.showCollapseBtn && (props.fieldsNum >= quantity);
-});
 const toggleCollapse = () => {
   isCollapse.value = !isCollapse.value;
 };
@@ -78,7 +63,7 @@ const handleReset = () => {
 };
 
 defineExpose({
-  shouldCollapse,
+  isCollapse,
 });
 </script>
 

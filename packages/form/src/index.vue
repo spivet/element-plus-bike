@@ -11,13 +11,14 @@
       <!-- 查询表单模块 -->
       <el-row class="dm-form__row">
         <el-col
-          v-for="(field, index) in fields"
+          v-for="(field) in actualFields"
           :key="field.prop"
-          :class="['dm-form__col', shouldCollapse(index) ? 'dm-form__item--hidden' : '']"
-          :lg="field.colAttrs?.lg??DifferentSizeData.lg.span"
-          :md="field.colAttrs?.md??DifferentSizeData.md.span"
-          :sm="field.colAttrs?.sm??DifferentSizeData.sm.span"
-          :xs="field.colAttrs?.xs??DifferentSizeData.xs.span"
+          class="dm-form__col"
+          :lg="DifferentSizeData.lg.span"
+          :md="DifferentSizeData.md.span"
+          :sm="DifferentSizeData.sm.span"
+          :xs="DifferentSizeData.xs.span"
+          v-bind="field.colAttrs"
         >
           <el-form-item
             :label="field.label"
@@ -122,9 +123,20 @@ watchEffect(() => {
 });
 
 const formOperation = ref(null);
-let shouldCollapse = ref(() => {});
+// 获取每一行表单字段的数量
+const getPerLineFieldQuantity = () => {
+  const documentScrollWidth = document.documentElement.scrollWidth;
+  const size = Object.values(DifferentSizeData).find((item) => documentScrollWidth >= item.width);
+  return size.quantity;
+};
+let actualFields = ref([]);
 watchEffect(() => {
-  shouldCollapse.value = formOperation.value?.shouldCollapse;
+  if(formOperation.value.isCollapse) {
+    const quantity = getPerLineFieldQuantity();
+    actualFields.value = props.fields.slice(0, quantity - 1);
+  } else {
+    actualFields.value = props.fields;
+  }
 }, {flush: 'post'});
 
 const searchForm = ref('searchForm');
