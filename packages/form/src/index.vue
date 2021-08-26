@@ -14,10 +14,10 @@
           v-for="(field) in actualFields"
           :key="field.prop"
           class="dm-form__col"
-          :lg="DifferentSizeData.lg.span"
-          :md="DifferentSizeData.md.span"
-          :sm="DifferentSizeData.sm.span"
-          :xs="DifferentSizeData.xs.span"
+          :lg="mode === FormMode.SEARCH ? DifferentSizeData.lg.span : {}"
+          :md="mode === FormMode.SEARCH ? DifferentSizeData.md.span : {}"
+          :sm="mode === FormMode.SEARCH ? DifferentSizeData.sm.span : {}"
+          :xs="mode === FormMode.SEARCH ? DifferentSizeData.xs.span : {}"
           v-bind="field.colAttrs"
         >
           <el-form-item
