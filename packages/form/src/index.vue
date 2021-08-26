@@ -188,6 +188,7 @@ defineExpose({
 }
 
 .el-select,
+.el-cascader,
 .el-date-editor--daterange.el-input,
 .el-date-editor--daterange.el-input__inner,
 .el-date-editor--timerange.el-input,
