@@ -9,7 +9,7 @@
       {{ submitBtnText }}
     </el-button>
     <el-button size="small" @click="handleReset">
-      重置
+      {{ resetBtnText }}
     </el-button>
     <span
       v-if="showCollapseBtn"
@@ -31,30 +31,36 @@ export default {
 import {ref} from 'vue';
 
 const props = defineProps({
+  // 确认按钮文本
   submitBtnText: {
     type: String,
     default: '确认'
   },
-  fieldsNum: {
-    type: Number,
-    default: 0,
+  // 重置按钮文本
+  resetBtnText: {
+    type: String,
+    default: '重置'
   },
+  // 表单是否默认收起状态
   collapse: {
     type: Boolean,
     default: true,
   },
+  // 是否显示【展开/收起】按钮
   showCollapseBtn: {
     type: Boolean,
     default: true
   }
 });
-const emit = defineEmits(['submit', 'reset']);
 
+// 切换表单展开收起
 const isCollapse = ref(props.collapse);
-
 const toggleCollapse = () => {
   isCollapse.value = !isCollapse.value;
 };
+
+// 按钮点击事件
+const emit = defineEmits(['submit', 'reset']);
 const handleSubmit = () => {
   emit('submit');
 };

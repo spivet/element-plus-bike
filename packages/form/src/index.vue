@@ -44,12 +44,12 @@
 
         <!-- 操作按钮模块 -->
         <FormOperation
-          v-if="inline && showOperation"
+          v-if="mode === FormMode.SEARCH && showOperation"
           ref="formOperation"
-          :fields-num="fields.length"
           :collapse="collapse"
           :show-collapse-btn="showCollapseBtn"
           :submit-btn-text="submitBtnText"
+          :reset-btn-text="resetBtnText"
           @submit="handleSubmit"
           @reset="handleReset"
         />
@@ -57,12 +57,12 @@
 
       <!-- 操作按钮模块 -->
       <FormOperation
-        v-if="!inline && showOperation"
+        v-if="mode === FormMode.NORMAL && showOperation"
         ref="formOperation"
-        :fields-num="fields.length"
         :collapse="collapse"
         :show-collapse-btn="false"
         :submit-btn-text="submitBtnText"
+        :reset-btn-text="resetBtnText"
         @submit="handleSubmit"
         @reset="handleReset"
       />
@@ -81,30 +81,43 @@ import { watchEffect, ref } from 'vue';
 import FormOperation from './form-operation.vue';
 import { DifferentSizeData } from './constant';
 
+const FormMode = {
+  NORMAL: 'normal',
+  SEARCH: 'search',
+};
+
 const props = defineProps({
   modelValue: {
     type: Object,
     default: () => ({}),
   },
-  inline: {
-    type: Boolean,
-    default: false,
-  },
-  showOperation: {
-    type: Boolean,
-    default: true,
-  },
+  // el-form attributes
   formProps: {
     type: Object,
     default: () => ({}),
   },
+  // 表单字段
   fields: {
     type: Array,
     default: () => [],
   },
+  // 表单模式：normal/search
+  mode: {
+    type: String,
+    default: 'normal'
+  },
+  // 是否展示表单操作按钮
+  showOperation: {
+    type: Boolean,
+    default: true,
+  },
   submitBtnText: {
     type: String,
     default: '确认',
+  },
+  resetBtnText: {
+    type: String,
+    default: '重置',
   },
   collapse: {
     type: Boolean,
@@ -129,9 +142,10 @@ const getPerLineFieldQuantity = () => {
   const size = Object.values(DifferentSizeData).find((item) => documentScrollWidth >= item.width);
   return size.quantity;
 };
+// 展开/收起时，实际展示的表单字段
 let actualFields = ref([]);
 watchEffect(() => {
-  if(formOperation.value.isCollapse) {
+  if(props.mode === FormMode.SEARCH && formOperation.value?.isCollapse) {
     const quantity = getPerLineFieldQuantity();
     actualFields.value = props.fields.slice(0, quantity - 1);
   } else {
