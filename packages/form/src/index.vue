@@ -14,10 +14,10 @@
           v-for="(field) in actualFields"
           :key="field.prop"
           class="dm-form__col"
-          :lg="mode === FormMode.SEARCH ? DifferentSizeData.lg.span : {}"
-          :md="mode === FormMode.SEARCH ? DifferentSizeData.md.span : {}"
-          :sm="mode === FormMode.SEARCH ? DifferentSizeData.sm.span : {}"
-          :xs="mode === FormMode.SEARCH ? DifferentSizeData.xs.span : {}"
+          :lg="isSearchMode ? DifferentSizeData.lg.span : {}"
+          :md="isSearchMode ? DifferentSizeData.md.span : {}"
+          :sm="isSearchMode ? DifferentSizeData.sm.span : {}"
+          :xs="isSearchMode ? DifferentSizeData.xs.span : {}"
           v-bind="field.colAttrs"
         >
           <el-form-item
@@ -44,7 +44,7 @@
 
         <!-- 操作按钮模块 -->
         <FormOperation
-          v-if="mode === FormMode.SEARCH && showOperation"
+          v-if="isSearchMode && showOperation"
           ref="formOperation"
           :collapse="collapse"
           :show-collapse-btn="showCollapseBtn"
@@ -57,7 +57,7 @@
 
       <!-- 操作按钮模块 -->
       <FormOperation
-        v-if="mode === FormMode.NORMAL && showOperation"
+        v-if="isNormalMode && showOperation"
         ref="formOperation"
         :collapse="collapse"
         :show-collapse-btn="false"
@@ -80,11 +80,7 @@ export default {
 import { watchEffect, ref } from 'vue';
 import FormOperation from './form-operation.vue';
 import { DifferentSizeData } from './constant';
-
-const FormMode = {
-  NORMAL: 'normal',
-  SEARCH: 'search',
-};
+import useMode from './uses/useMode';
 
 const props = defineProps({
   modelValue: {
@@ -127,8 +123,14 @@ const props = defineProps({
     type: Boolean,
     default: true,
   },
+  onError: {
+    type: Function,
+    default: () => {}
+  }
 });
 const emit = defineEmits(['submit', 'reset', 'update:modelValue']);
+
+const {isSearchMode, isNormalMode} = useMode(props.mode);
 
 const formData = ref({ ...props.modelValue });
 watchEffect(() => {
@@ -145,7 +147,7 @@ const getPerLineFieldQuantity = () => {
 // 展开/收起时，实际展示的表单字段
 let actualFields = ref([]);
 watchEffect(() => {
-  if(props.mode === FormMode.SEARCH && formOperation.value?.isCollapse) {
+  if(isSearchMode.value && formOperation.value?.isCollapse) {
     const quantity = getPerLineFieldQuantity();
     actualFields.value = props.fields.slice(0, quantity - 1);
   } else {
@@ -154,8 +156,18 @@ watchEffect(() => {
 }, {flush: 'post'});
 
 const searchForm = ref('searchForm');
-const handleSubmit = () => {
-  emit('submit', formData.value);
+const handleSubmit = async () => {
+  if (isSearchMode.value) {
+    emit('submit', formData.value);
+    return;
+  }
+
+  try {
+    await searchForm.value.validate();
+    emit('submit', formData.value);
+  } catch(err) {
+    props.onError(err);
+  }
 };
 const handleReset = () => {
   searchForm.value.resetFields();
