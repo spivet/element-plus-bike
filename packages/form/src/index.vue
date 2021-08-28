@@ -25,7 +25,7 @@
             :prop="field.prop"
             v-bind="field.formItemAttrs"
           >
-            <slot v-if="$slots[field.prop]" :name="field.name" />
+            <slot v-if="$slots[field.prop]" :name="field.prop" />
             <component
               :is="field.component"
               v-else
