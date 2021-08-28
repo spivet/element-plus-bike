@@ -32,12 +32,7 @@
               v-model="formData[field.prop]"
               v-bind="field.componentAttrs"
             >
-              <component
-                :is="field.subComponent"
-                v-for="option in field.options"
-                :key="option.value"
-                v-bind="option"
-              />
+              <FieldSub :parent-name="field.component" :options="field.options" />
             </component>
           </el-form-item>
         </el-col>
@@ -78,6 +73,7 @@ export default {
 
 <script setup>
 import { watchEffect, ref } from 'vue';
+import FieldSub from './field-sub.vue';
 import FormOperation from './form-operation.vue';
 import { DifferentSizeData } from './constant';
 import useMode from './uses/useMode';
