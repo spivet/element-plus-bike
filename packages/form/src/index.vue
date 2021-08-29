@@ -72,11 +72,13 @@ export default {
 </script>
 
 <script setup>
-import { watchEffect, ref } from 'vue';
 import FieldSub from './field-sub.vue';
 import FormOperation from './form-operation.vue';
-import { DifferentSizeData } from './constant';
+import useFields from './uses/useFields';
 import useMode from './uses/useMode';
+import { DifferentSizeData } from './constant';
+import useForm from './uses/useForm';
+import useFormOpetaion from './uses/useFormOperation';
 
 const props = defineProps({
   modelValue: {
@@ -127,48 +129,10 @@ const props = defineProps({
 const emit = defineEmits(['submit', 'reset', 'update:modelValue']);
 
 const {isSearchMode, isNormalMode} = useMode(props.mode);
-
-const formData = ref({ ...props.modelValue });
-watchEffect(() => {
-  emit('update:modelValue', formData.value);
-});
-
-const formOperation = ref(null);
-// 获取每一行表单字段的数量
-const getPerLineFieldQuantity = () => {
-  const documentScrollWidth = document.documentElement.scrollWidth;
-  const size = Object.values(DifferentSizeData).find((item) => documentScrollWidth >= item.width);
-  return size.quantity;
-};
-// 展开/收起时，实际展示的表单字段
-let actualFields = ref([]);
-watchEffect(() => {
-  if(isSearchMode.value && formOperation.value?.isCollapse) {
-    const quantity = getPerLineFieldQuantity();
-    actualFields.value = props.fields.slice(0, quantity - 1);
-  } else {
-    actualFields.value = props.fields;
-  }
-}, {flush: 'post'});
-
-const searchForm = ref('searchForm');
-const handleSubmit = async () => {
-  if (isSearchMode.value) {
-    emit('submit', formData.value);
-    return;
-  }
-
-  try {
-    await searchForm.value.validate();
-    emit('submit', formData.value);
-  } catch(err) {
-    props.onError(err);
-  }
-};
-const handleReset = () => {
-  searchForm.value.resetFields();
-  emit('reset', formData.value);
-};
+const {searchForm, formData} = useForm(props, emit);
+const {formOperation, handleSubmit, handleReset} = useFormOpetaion(props, emit, {searchForm, formData, isSearchMode});
+const isCollapse = isSearchMode.value && formOperation.value?.isCollapse;
+const {actualFields} = useFields(isCollapse, props.fields);
 
 defineExpose({
   validate: searchForm.value.validate
