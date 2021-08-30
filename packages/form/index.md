@@ -423,40 +423,40 @@ const handleReset = (form) => {
 
 | 参数        | 说明         | 类型         | 可选值       | 默认值       |
 | ----------- | ----------- | ----------- | ----------- | ----------- |
-| model-value / v-model   | 表单绑定值        | - | - | - |
-| formProps   | [el-form 属性](https://element-plus.gitee.io/#/zh-CN/component/form)       | Object | - | {} |
-| fields   | 表单字段，具体参数见下表       | Array | - | [] |
+| model-value / v-model   | 表单绑定值        | -- | -- | -- |
+| formProps   | [el-form 属性](https://element-plus.gitee.io/#/zh-CN/component/form)       | Object | -- | {} |
+| fields   | 表单字段，具体参数见下表       | Array | -- | [] |
 | mode   | 表单模式，目前包括普通模式和查询模式       | String | normal/search | normal |
-| showOperation   | 是否展示表单操作按钮       | Boolean | - | true |
-| submitBtnText   | 确认按钮文本      | String | - | 确认 |
-| resetBtnText   | 重置按钮文本       | String | - | 重置 |
-| collapse   | 表单是否默认收起状态      | Boolean | - | true |
-| showCollapseBtn   | 是否显示【展开/收起】按钮       | Boolean | - | true |
-| onError   | 处理表单验证失败的方法       | Function | - | - |
+| showOperation   | 是否展示表单操作按钮       | Boolean | -- | true |
+| submitBtnText   | 确认按钮文本      | String | -- | 确认 |
+| resetBtnText   | 重置按钮文本       | String | -- | 重置 |
+| collapse   | 表单是否默认收起状态      | Boolean | -- | true |
+| showCollapseBtn   | 是否显示【展开/收起】按钮       | Boolean | -- | true |
+| onError   | 处理表单验证失败的方法       | Function | -- | -- |
 
 ### Fields
 
 | 参数        | 说明         | 类型         | 可选值       | 默认值       |
 | ----------- | ----------- | ----------- | ----------- | ----------- |
-| prop   | 作用与 `el-form-item` 组件的 `prop` 属性一样，同时还会作为自定义组件的 slot 名        | String | - | - |
-| label  | 表单字段的中文名，与 `el-form-item` 组件的 `label` 属性一样       | String | - | - |
-| formItemAttrs  | `el-form-item` 组件的属性配置，具体查看 [Form-Item Attributes](https://element-plus.gitee.io/#/zh-CN/component/form#form-item-attributes)      | Objec | - | - |
-| component  | `element-plus` 的表单组件名，用短横线格式       | String | - | - |
-| componentAttrs  | 对应组件的属性，具体查看对应的 `element-plus` 表单组件的属性文档       | Object | - | - |
-| rowAttrs  | `el-row` 组件的属性配置，具体查看 [Row Attributes](https://element-plus.gitee.io/#/zh-CN/component/layout#row-attributes)      | Objec | - | - |
-| colAttrs  | `el-form-item` 组件的属性配置，具体查看 [Col Attributes](https://element-plus.gitee.io/#/zh-CN/component/layout#col-attributes)      | Objec | - | - |
-| options  | 遍历生成 `el-option/el-checkbox/el-radio` 组件，具体属性见下表      | Array | - | - |
+| prop   | 作用与 `el-form-item` 组件的 `prop` 属性一样，同时还会作为自定义组件的 slot 名        | String | -- | -- |
+| label  | 表单字段的中文名，与 `el-form-item` 组件的 `label` 属性一样       | String | -- | -- |
+| formItemAttrs  | `el-form-item` 组件的属性配置，具体查看 [Form-Item Attributes](https://element-plus.gitee.io/#/zh-CN/component/form#form-item-attributes)      | Objec | -- | -- |
+| component  | `element-plus` 的表单组件名，用短横线格式       | String | -- | -- |
+| componentAttrs  | 对应组件的属性，具体查看对应的 `element-plus` 表单组件的属性文档       | Object | -- | -- |
+| rowAttrs  | `el-row` 组件的属性配置，具体查看 [Row Attributes](https://element-plus.gitee.io/#/zh-CN/component/layout#row-attributes)      | Objec | -- | -- |
+| colAttrs  | `el-form-item` 组件的属性配置，具体查看 [Col Attributes](https://element-plus.gitee.io/#/zh-CN/component/layout#col-attributes)      | Objec | -- | -- |
+| options  | 遍历生成 `el-option/el-checkbox/el-radio` 组件，具体属性见下表      | Array | -- | -- |
 
 ### Options
 
 | 参数        | 说明         | 类型         | 可选值       | 默认值       |
 | ----------- | ----------- | ----------- | ----------- | ----------- |
-| label  | `el-option/el-checkbox/el-radio` 元素的中文名      | String | - | - |
-| value  | `el-option/el-checkbox/el-radio` 元素的具体值       | String/Number/Boolean | - | - |
-| -      | `el-option/el-checkbox/el-radio` 组件的额外属性，具体查看对应的 `element-plus` 组件文档       | - | - | - |
+| label  | `el-option/el-checkbox/el-radio` 元素的中文名      | String | -- | -- |
+| value  | `el-option/el-checkbox/el-radio` 元素的具体值       | String/Number/Boolean | -- | -- |
+| --      | `el-option/el-checkbox/el-radio` 组件的额外属性，具体查看对应的 `element-plus` 组件文档       | -- | -- | -- |
 
 ### Form Slot
 
 | name        | 说明         |
 | ----------- | ----------- |
-| -           | slot 的 `name` 值与字段的 `prop` 属性一一对应 |
+| --           | slot 的 `name` 值与字段的 `prop` 属性一一对应 |
