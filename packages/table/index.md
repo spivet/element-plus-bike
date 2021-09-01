@@ -432,7 +432,7 @@ const tableData = [
 
 | 参数        | 说明         | 类型         | 可选值       | 默认值       |
 | ----------- | ----------- | ----------- | ----------- | ----------- |
-| loading  | 表格加载状态       Boolean     | --           | false       |
+| loading  | 表格加载状态      | Boolean     | --           | false       |
 | columns  | 配置表格列，每一项所包含的属性与 [el-table-column attributes](https://element-plus.gitee.io/#/zh-CN/component/table#table-column-attributes) 相同       | Array | -- | -- |
 | pagination  | 设置分页组件，配置与 [el-pagination attributes](https://element-plus.gitee.io/#/zh-CN/component/pagination#attributes) 相同。       | String/Number/Boolean | -- | -- |
 | --       | `el-table` 的任意[属性](https://element-plus.gitee.io/#/zh-CN/component/table#table-attributes)       | -- | -- | -- |

@@ -28,6 +28,11 @@ const router = createRouter({
       name: 'table',
       component: () => import('packages/table/index.md'),
     },
+    {
+      path: '/useCrud',
+      name: 'useCrud',
+      component: () => import('packages/uses/src/use-crud.md'),
+    },
   ],
 });
 

@@ -15,6 +15,15 @@
         表格
       </el-menu-item>
     </el-menu-item-group>
+
+    <el-menu-item-group>
+      <template #title>
+        Uses
+      </template>
+      <el-menu-item index="/useCrud">
+        useCrud
+      </el-menu-item>
+    </el-menu-item-group>
   </el-menu>
 </template>
 
