@@ -72,6 +72,7 @@ export default {
 </script>
 
 <script setup>
+import {computed} from 'vue';
 import FieldSub from './field-sub.vue';
 import FormOperation from './form-operation.vue';
 import useFields from './uses/useFields';
@@ -131,7 +132,7 @@ const emit = defineEmits(['submit', 'reset', 'update:modelValue']);
 const {isSearchMode, isNormalMode} = useMode(props.mode);
 const {searchForm, formData} = useForm(props, emit);
 const {formOperation, handleSubmit, handleReset} = useFormOpetaion(props, emit, {searchForm, formData, isSearchMode});
-const isCollapse = isSearchMode.value && formOperation.value?.isCollapse;
+const isCollapse = computed(() => isSearchMode.value && formOperation.value?.isCollapse);
 const {actualFields} = useFields(isCollapse, props.fields);
 
 defineExpose({
