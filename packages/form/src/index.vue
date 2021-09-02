@@ -30,7 +30,7 @@
               :is="field.component"
               v-else
               v-model="formData[field.prop]"
-              v-bind="field.componentAttrs"
+              v-bind="getFormFieldProps(field.component, field.componentAttrs)"
             >
               <FieldSub :parent-name="field.component" :options="field.options" />
             </component>
@@ -133,7 +133,7 @@ const {isSearchMode, isNormalMode} = useMode(props.mode);
 const {searchForm, formData} = useForm(props, emit);
 const {formOperation, handleSubmit, handleReset} = useFormOpetaion(props, emit, {searchForm, formData, isSearchMode});
 const isCollapse = computed(() => isSearchMode.value && formOperation.value?.isCollapse);
-const {actualFields} = useFields(isCollapse, props.fields);
+const {actualFields, getFormFieldProps} = useFields(isCollapse, props.fields);
 
 defineExpose({
   validate: searchForm.value.validate

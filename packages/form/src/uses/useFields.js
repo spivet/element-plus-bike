@@ -1,4 +1,5 @@
 import {watchEffect, ref} from 'vue';
+import { getConfig } from 'packages/utils/config';
 import { DifferentSizeData } from '../constant';
 
 export default function useFields(isCollapase, fields) {
@@ -19,7 +20,13 @@ export default function useFields(isCollapase, fields) {
     }
   }, {flush: 'post'});
 
+  const getFormFieldProps = (fieldName, props) => {
+    const formFieldConfig = getConfig('formField');
+    return { ...formFieldConfig[fieldName], ...props };
+  };
+
   return {
-    actualFields
+    actualFields,
+    getFormFieldProps
   };
 }
