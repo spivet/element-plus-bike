@@ -1,4 +1,4 @@
-import { mergeDeep } from './util';
+import { isObject, mergeDeep } from './util';
 
 let defaultConfig = {
   form: {},
@@ -11,6 +11,7 @@ let defaultConfig = {
 };
 
 export function setConfig(opt) {
+  if (!isObject(opt)) return;
   defaultConfig = mergeDeep(defaultConfig, opt);
 }
 
