@@ -1,11 +1,13 @@
-import DmForm from './form';
-import DmTable from './table';
+import BiForm from './form';
+import BiTable from './table';
+import BiImageViewer from './image-viewer';
 
 import { setConfig } from './utils/config';
 
 const components = [
-  DmForm,
-  DmTable,
+  BiForm,
+  BiTable,
+  BiImageViewer
 ];
 
 const install = (app, options) => {

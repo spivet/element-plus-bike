@@ -39,7 +39,7 @@ import useTable from './uses/useTable';
 import usePagination from './uses/usePagination';
 
 export default {
-  name: 'DmTable',
+  name: 'BiTable',
   inheritAttrs: false,
   props: {
     loading: {

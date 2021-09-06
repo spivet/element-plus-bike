@@ -4,7 +4,7 @@
 
 ```vue demo
 <template>
-  <DmTable
+  <BiTable
     :columns="columns"
     :data="tableData"
   />
@@ -52,7 +52,7 @@ const tableData = [
 
 ```vue demo
 <template>
-  <DmTable
+  <BiTable
     :columns="columns"
     :loading="loading"
   />
@@ -96,7 +96,7 @@ const loading = true
 
 ```vue demo
 <template>
-  <DmTable
+  <BiTable
     :columns="columns"
     :data="tableData"
   />
@@ -142,7 +142,7 @@ const tableData = []
 
 ```vue demo
 <template>
-  <DmTable
+  <BiTable
     :columns="columns"
     :data="tableData"
   />
@@ -196,7 +196,7 @@ const tableData = [
 
 ```vue demo
 <template>
-  <DmTable
+  <BiTable
     :columns="columns"
     :data="tableData"
     @selection-change="handleSelectionChange"
@@ -254,7 +254,7 @@ const handleSelectionChange = (val) => {
 
 ```vue demo
 <template>
-  <DmTable
+  <BiTable
     :columns="columns"
     :data="tableData"
     stripe
@@ -305,7 +305,7 @@ const tableData = [
 
 ```vue demo
 <template>
-  <DmTable
+  <BiTable
     :columns="columns"
     :data="tableData"
   >
@@ -321,7 +321,7 @@ const tableData = [
         编辑
       </el-button>
     </template>
-  </DmTable>
+  </BiTable>
 </template>
 
 <script setup>
@@ -373,7 +373,7 @@ const tableData = [
 
 ```vue demo
 <template>
-  <DmTable
+  <BiTable
     v-model:pagination="pagination"
     :columns="columns"
     :data="tableData"

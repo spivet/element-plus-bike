@@ -37,7 +37,7 @@ const {data, loading, onSubmit, onReset} = useCrud(pagination, fetchData);
 <template>
   <div class="table-list-root">
     <el-card style="margin-bottom: 20px">
-      <DmForm
+      <BiForm
         v-model="searchForm"
         mode="search"
         :fields="fields"
@@ -47,7 +47,7 @@ const {data, loading, onSubmit, onReset} = useCrud(pagination, fetchData);
     </el-card>
 
     <el-card>
-      <DmTable
+      <BiTable
         v-model:pagination="pagination"
         :loading="loading"
         :columns="columns"
@@ -58,7 +58,7 @@ const {data, loading, onSubmit, onReset} = useCrud(pagination, fetchData);
             编辑
           </el-button>
         </template>
-      </DmTable>
+      </BiTable>
     </el-card>
   </div>
 </template>

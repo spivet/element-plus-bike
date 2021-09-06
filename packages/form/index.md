@@ -4,7 +4,7 @@
 
 ```vue demo
 <template>
-  <DmForm
+  <BiForm
     v-model="searchForm"
     :fields="fields"
     @submit="handleSearch"
@@ -92,7 +92,7 @@ const handleReset = (form) => {
 
 ```vue demo
 <template>
-  <DmForm
+  <BiForm
     v-model="searchForm"
     :fields="fields"
     @submit="handleSearch"
@@ -169,7 +169,7 @@ const handleReset = (form) => {
 
 ```vue demo
 <template>
-  <DmForm
+  <BiForm
     v-model="searchForm"
     :fields="fields"
     @submit="handleSearch"

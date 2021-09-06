@@ -13,6 +13,11 @@
   </div>
 </template>
 
+<script>
+export default {
+  name: 'BiImageViewer'
+};
+</script>
 <script setup>
 import { ref } from 'vue';
 import { ElImageViewer } from 'element-plus';
