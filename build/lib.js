@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
   lib: {
-    entry: path.resolve(__dirname, 'packages/index.js'),
+    entry: path.resolve(__dirname, '../packages/index.js'),
     name: 'Plato',
     filename: 'index.js',
   },
