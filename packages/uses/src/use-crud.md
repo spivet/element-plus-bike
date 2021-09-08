@@ -11,26 +11,6 @@ import {useCrud} from 'demi';
 const {data, loading, onSubmit, onReset} = useCrud(pagination, fetchData);
 ```
 
-### 说明
-
-`useCrud` 函数参数
-
-| 参数        | 说明         | 类型         | 可选值       |
-| ----------- | ----------- | ----------- | ----------- |
-| fetchData  | 获取数据列表的方法，该方法必须返回列表数据 `tableData` 以及数据总条数 `total`   | Function     | --           |
-| pagination  | 分页组件配置  | Object     | --           |
-
-`useCrud` 函数返回值
-
-| 返回值        | 说明         | 类型         | 可选值       |
-| ----------- | ----------- | ----------- | ----------- |
-| data  | 表格数据  |    Array     | --           |
-| loading  | 表格加载状态   |   Boolean     | --           |
-| onSubmit  | 当点击确认按钮触发   |   Function     | --           |
-| onReset  | 当点击重置按钮触发   |   Function     | --           |
-
-
-
 ### 示例
 
 ```vue demo
@@ -68,30 +48,43 @@ import {ref} from 'vue';
 import axios from 'axios';
 import {useCrud} from './use-crud.js';
 
+const addressList = ref([])
 const fields = [
   {
     prop: 'name',
-    label: '系统名称',
+    label: '姓名',
     component: 'el-input',
     modifier: 'number',
     componentAttrs: {
-      placeholder: '请输入系统名称',
+      placeholder: '请输入姓名',
     },
   },
   {
-    prop: 'ip',
-    label: '系统地址',
+    prop: 'address',
+    label: '地址',
+    component: 'el-select',
+    componentAttrs: {
+      placeholder: '请输入地址',
+      filterable: true,
+      remote: true,
+      remoteMethod: fetchAddress
+    },
+    options: addressList
+  },
+  {
+    prop: 'phone',
+    label: '电话',
     component: 'el-input',
     props: {
-      placeholder: '请输入系统名称',
+      placeholder: '请输入电话',
     },
   },
   {
-    prop: 'systemCode',
-    label: '系统类型',
+    prop: 'job',
+    label: '职业',
     component: 'el-input',
     componentAttrs: {
-      placeholder: '请输入系统名称',
+      placeholder: '请输入职业',
     },
   },
   {
@@ -102,14 +95,6 @@ const fields = [
       {label: '开启', value: 0},
       {label: '关闭', value: 1}
     ]
-  },
-  {
-    prop: 'prop4',
-    label: '系统名称',
-    component: 'el-input',
-    componentAttrs: {
-      placeholder: '请输入系统名称',
-    },
   },
 ];
 const columns = [
@@ -187,7 +172,6 @@ const editFields = [
     ]
   },
 ];
-const editForm = ref({});
 
 const fetchData = async (query, pagination) => {
   const res = await getList();
@@ -207,9 +191,36 @@ const handleEdit = () => {
   });
 };
 
+function fetchAddress() {
+  setTimeout(() => {
+    addressList.value = [
+      {label: '云南省 大理白族自治州 其它区', value: 920181},
+      {label: '辽宁省 阜新市 清河门区', value: 324171},
+      {label: '四川省 乐山市 五通桥区', value: 784627},
+    ]
+  })
+}
 function getList() {
   return axios.get('/api/list');
 }
 </script>
 ```
 
+
+### 说明
+
+`useCrud` 函数参数
+
+| 参数        | 说明         | 类型         | 可选值       |
+| ----------- | ----------- | ----------- | ----------- |
+| fetchData  | 获取数据列表的方法，该方法必须返回列表数据 `tableData` 以及数据总条数 `total`   | Function     | --           |
+| pagination  | 分页组件配置  | Object     | --           |
+
+`useCrud` 函数返回值
+
+| 返回值        | 说明         | 类型         | 可选值       |
+| ----------- | ----------- | ----------- | ----------- |
+| data  | 表格数据  |    Array     | --           |
+| loading  | 表格加载状态   |   Boolean     | --           |
+| onSubmit  | 当点击确认按钮触发   |   Function     | --           |
+| onReset  | 当点击重置按钮触发   |   Function     | --           |
