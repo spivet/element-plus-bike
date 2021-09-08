@@ -2,7 +2,7 @@ import {watchEffect, ref} from 'vue';
 import { getConfig } from 'packages/utils/config';
 import { DifferentSizeData } from '../constant';
 
-export default function useFields(isCollapase, fields) {
+export default function useFields(props, isCollapase) {
   // 获取每一行表单字段的数量
   const getPerLineFieldQuantity = () => {
     const documentScrollWidth = document.documentElement.scrollWidth;
@@ -14,9 +14,9 @@ export default function useFields(isCollapase, fields) {
   watchEffect(() => {
     if(isCollapase.value) {
       const quantity = getPerLineFieldQuantity();
-      actualFields.value = fields.slice(0, quantity - 1);
+      actualFields.value = props.fields.slice(0, quantity - 1);
     } else {
-      actualFields.value = fields;
+      actualFields.value = props.fields;
     }
   }, {flush: 'post'});
 

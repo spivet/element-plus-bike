@@ -133,7 +133,7 @@ const {isSearchMode, isNormalMode} = useMode(props.mode);
 const {searchForm, formData} = useForm(props, emit);
 const {formOperation, handleSubmit, handleReset} = useFormOpetaion(props, emit, {searchForm, formData, isSearchMode});
 const isCollapse = computed(() => isSearchMode.value && formOperation.value?.isCollapse);
-const {actualFields, getFormFieldProps} = useFields(isCollapse, props.fields);
+const {actualFields, getFormFieldProps} = useFields(props, isCollapse);
 
 defineExpose({
   validate: searchForm.value.validate
