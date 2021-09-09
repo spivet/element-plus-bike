@@ -1,7 +1,7 @@
 import { ref, watch } from 'vue';
 
 export function useCrud(pagination, request) {
-  const initPagination = JSON.parse(JSON.stringify(pagination.value));
+  const initPagination = () => JSON.parse(JSON.stringify(pagination.value));
 
   const data = ref([]);
   const loading = ref(false);
@@ -18,10 +18,10 @@ export function useCrud(pagination, request) {
   });
 
   const onSubmit = () => {
-    pagination.value = initPagination;
+    pagination.value = initPagination();
   };
   const onReset = () => {
-    pagination.value = initPagination;
+    pagination.value = initPagination();
   };
 
   fetchTableData();
