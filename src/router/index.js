@@ -4,6 +4,10 @@ const router = createRouter({
   history: createWebHistory(),
   routes: [
     {
+      path: '/',
+      redirect: 'useage',
+    },
+    {
       path: '/table-search',
       name: 'table-search',
       component: () => import('../views/table-search.vue'),
@@ -17,6 +21,11 @@ const router = createRouter({
       path: '/dm-form',
       name: 'dm-form',
       component: () => import('../views/dm-form.vue'),
+    },
+    {
+      path: '/useage',
+      name: 'useage',
+      component: () => import('../views/useage.md'),
     },
     {
       path: '/form',

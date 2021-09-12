@@ -4,6 +4,9 @@
     class="el-menu-vertical-demo"
     :router="true"
   >
+    <el-menu-item index="/useage">
+      使用
+    </el-menu-item>
     <el-menu-item-group>
       <template #title>
         数据
