@@ -18,7 +18,7 @@ yarn add element-plus-bike
 
 ### 引用
 
-在引入 element-plus-bike 时，可以进行全局配置，目前支持 `formField` 字段，用来配置 element-plus 表单组件的属性。
+在引入 element-plus-bike 时，可以进行全局配置，用来配置 element-plus 表单组件的属性。
 
 ```javascript
 import ElementPlus from 'element-plus';
@@ -37,4 +37,21 @@ createApp(App)
     }
   })
   .mount('#app');
+```
+
+目前支持的字段有：
+
+```javascript
+{
+  // 对表单字段组件进行配置
+  formField: {
+    'el-input': {
+      // el-input 组件的属性
+    }
+  },
+  // 对分页组件进行配置
+  pagination: {
+    layout: 'prev next',
+  }
+}
 ```
