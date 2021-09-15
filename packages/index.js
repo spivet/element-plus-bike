@@ -21,4 +21,4 @@ export default {
   install
 };
 
-export * from './uses';
+export * from './hooks';
