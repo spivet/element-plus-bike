@@ -6,7 +6,9 @@ import { vite2Ext } from "apite";
 
 const path = require('path');
 const lib = require('./build/lib');
+const web = require('./build/web');
 
+console.log(process.env.MODE);
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
@@ -24,5 +26,5 @@ export default defineConfig({
     },
   },
 
-  build: process.env.MODE === 'lib' ? lib : {},
+  build: process.env.MODE === 'lib' ? lib : web,
 });
