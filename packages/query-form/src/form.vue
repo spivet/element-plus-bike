@@ -31,7 +31,10 @@
                             v-model="formData[field.prop]"
                             v-bind="getFormFieldProps(field.component, field.componentAttrs)"
                         >
-                            <FormItemSub :parent-name="field.component" :options="field.options" />
+                            <FormItemSub
+                              v-if="field.options"
+                              :parent-name="field.component"
+                              :options="field.options" />
                         </component>
                     </a-form-item>
                 </a-col>
@@ -133,6 +136,7 @@ export default defineComponent({
       emit('submit', formData.value);
     };
     const handleReset = () => {
+      searchForm.value?.resetFields()
       emit('reset');
     };
     const { actualFields, getFormFieldProps } = useFields(props, isCollapse);
