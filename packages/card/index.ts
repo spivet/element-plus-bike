@@ -5,4 +5,5 @@ Card.install = (app: App) => {
   app.component(Card.name, Card);
 };
 
+export type CardInstance = InstanceType<typeof Card>;
 export default Card;
