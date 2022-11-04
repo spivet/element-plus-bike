@@ -13,18 +13,33 @@ export default defineConfig({
   build: {
     lib: {
       entry: path.resolve(__dirname, './packages/index.ts'),
-      name: 'arco-design-dx',
-      fileName: 'index.js',
+      formats: ['es', 'cjs'],
+      // name: 'arco-design-dx',
+      // fileName: 'index',
     },
+    target: 'modules',
+    emptyOutDir: false,
+    minify: false,
     rollupOptions: {
+      input: [path.resolve(__dirname, './packages/index.ts')],
       // 确保外部化处理那些你不想打包进库的依赖
-      external: ['vue', 'arcoVue'],
-      output: {
-        // 在 UMD 构建模式下为这些外部化的依赖提供一个全局变量
-        globals: {
-          vue: 'Vue',
+      external: ['vue'],
+      output: [
+        {
+          format: 'es',
+          dir: 'es',
+          entryFileNames: '[name].js',
+          preserveModules: true,
+          preserveModulesRoot: 'packages',
         },
-      },
+        {
+          format: 'commonjs',
+          dir: 'lib',
+          entryFileNames: '[name].js',
+          preserveModules: true,
+          preserveModulesRoot: 'packages',
+        },
+      ],
     },    
   }
 })
