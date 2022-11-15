@@ -137,7 +137,7 @@ export default defineComponent({
     };
     const handleReset = () => {
       searchForm.value?.resetFields()
-      emit('reset');
+      emit('reset', formData.value);
     };
     const { actualFields, getFormFieldProps } = useFields(props, isCollapse);
 
