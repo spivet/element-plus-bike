@@ -72,7 +72,7 @@ import useFields from './hooks/useFields';
 import useForm from './hooks/useForm';
 
 export default defineComponent({
-  name: 'DxQueryForm',
+  name: 'QueryForm',
   components: {
     FormItemSub,
   },

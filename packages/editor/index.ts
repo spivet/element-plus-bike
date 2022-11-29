@@ -3,7 +3,7 @@ import { fixComponentName } from '../utils/config';
 import type { App } from 'vue';
 
 Editor.install = (app: App) => {
-  app.component(fixComponentName('Editor'), Editor);
+  app.component(fixComponentName(Editor.name), Editor);
 };
 
 export type EditorInstance = InstanceType<typeof Editor>;

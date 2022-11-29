@@ -1,8 +1,9 @@
 import Card from './src/card.vue';
+import { fixComponentName } from '../utils/config';
 import type { App } from 'vue';
 
 Card.install = (app: App) => {
-  app.component(Card.name, Card);
+  app.component(fixComponentName(Card.name), Card);
 };
 
 export type CardInstance = InstanceType<typeof Card>;

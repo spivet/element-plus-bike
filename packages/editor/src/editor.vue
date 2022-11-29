@@ -82,6 +82,11 @@ onBeforeUnmount(() => {
     editor.destroy();
 });
 </script>
+<script lang="ts">
+export default {
+    name: 'Editor',
+}
+</script>
 
 <style lang="less" scoped>
 .dx-editor-wrapper {
