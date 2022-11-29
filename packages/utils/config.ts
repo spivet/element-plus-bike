@@ -18,3 +18,7 @@ export function setConfig(opt: any) {
 export function getConfig(key: keyof typeof defaultConfig) {
   return defaultConfig[key];
 }
+
+export function fixComponentName(name: String) {
+  return `Dx${name}`
+}

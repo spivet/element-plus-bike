@@ -1,6 +1,6 @@
 {
   "name": "@daxing/vcomp",
-  "version": "0.2.1",
+  "version": "0.3.1",
   "type": "module",
   "main": "./lib/index.js",
   "module": "./es/index.js",
@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@wangeditor/editor": "^5.1.23",
+    "@wangeditor/editor-for-vue": "^5.1.12",
     "vue": "3.2.37",
     "vue-router": "^4.1.6"
   },
