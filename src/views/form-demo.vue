@@ -1,8 +1,8 @@
 <template>
-    <div>
+    <dx-card>
         <h2>dx-query-form</h2>
-        <dx-query-form :fields="formFields"></dx-query-form>
-    </div>
+        <dx-query-form :fields="formFields" showCollapseBtn></dx-query-form>
+    </dx-card>
 </template>
 
 <script setup lang="ts">
@@ -29,6 +29,23 @@ const formFields = [
     component: 'a-input',
     componentAttrs: {
       placeholder: '请输入用户ID',
+    },
+  },
+  {
+    prop: 'date',
+    label: '月份',
+    component: 'a-month-picker',
+    componentAttrs: {
+        placeholder: '请选择月份',
+        valueFormat: 'YYYYMM',
+    },
+  },
+  {
+    prop: 'time-range',
+    label: '时间范围',
+    component: 'a-range-picker',
+    componentAttrs: {
+      placeholder: ['开始时间', '结束时间'],
     },
   },
 ];

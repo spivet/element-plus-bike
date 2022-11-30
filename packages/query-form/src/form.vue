@@ -1,18 +1,18 @@
 <template>
-    <div class="dx-form-root">
+    <div class="dx-query-form-root">
         <a-form
             ref="searchForm"
-            class="dx-form__form"
+            class="dx-query-form__form"
             :model="formData"
             size="small"
             v-bind="formProps"
         >
             <!-- 查询表单模块 -->
-            <a-row class="dx-form__row">
+            <a-row class="dx-query-form__row">
                 <a-col
                     v-for="(field) in actualFields"
                     :key="field.prop"
-                    class="dx-form__col"
+                    class="dx-query-form__col"
                     :xl="DifferentSizeData.xl.span"
                     :lg="DifferentSizeData.lg.span"
                     :md="DifferentSizeData.md.span"
@@ -49,15 +49,16 @@
                     <a-button size="small" @click="handleReset">
                         {{ resetBtnText }}
                     </a-button>
-                    <span
+                    <a-button
                         v-if="showCollapseBtn"
-                        class="dx-form__btn--filter ml-28"
+                        type="text"
+                        size="small"
                         @click="toggleCollapse"
                     >
                         {{ isCollapse ? '展开' : '收起' }}
                         <icon-down v-if="isCollapse" />
                         <icon-up v-else />
-                    </span>
+                    </a-button>
                 </a-space>
             </a-row>
         </a-form>
@@ -164,35 +165,23 @@ export default defineComponent({
 
 <style lang="less">
 /**  查询表单模块样式  **/
-.dx-form__form {
+.dx-query-form__form {
   display: flex;
   flex-wrap: wrap;
 }
-.dx-form__row {
+
+.dx-query-form__row {
   width: 100%;
 }
-.dx-form__col:last-of-type {
-  margin-bottom: 0;
-}
-.el-form-item__label {
-  white-space: nowrap;
-  overflow: hidden;
-}
-.el-select,
-.el-cascader,
-.el-date-editor--daterange.el-input,
-.el-date-editor--daterange.el-input__inner,
-.el-date-editor--timerange.el-input,
-.el-date-editor--timerange.el-input__inner,
-.el-date-editor--datetimerange.el-input,
-.el-date-editor--datetimerange.el-input__inner {
-  width: 100%;
-}
-.el-date-editor .el-range-separator {
-  width: auto;
-}
-.dx-form__item--hidden {
-  display: none;
+
+.dx-query-form__col {
+  .arco-picker {
+    width: 100%;
+  }
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
 }
 
 .bts {
