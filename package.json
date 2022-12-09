@@ -1,6 +1,6 @@
 {
   "name": "@daxing/vcomp",
-  "version": "0.3.2",
+  "version": "0.3.4",
   "type": "module",
   "main": "./lib/index.js",
   "module": "./es/index.js",

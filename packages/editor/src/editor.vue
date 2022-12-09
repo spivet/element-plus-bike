@@ -45,7 +45,7 @@ const { mode, editorConfig, toolbarConfig } = useConfig()
 const editorRef: ShallowRef = shallowRef();
 
 // 内容 HTML
-const content = ref();
+const content = ref(props.modelValue);
 
 const createHandler = (editor: IDomEditor) => {
     editorRef.value = editor;
