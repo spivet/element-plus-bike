@@ -8,7 +8,6 @@
                 :defaultConfig="editorConfig"
                 :mode="mode"
                 @on-created="createHandler"
-                @on-change="onChange"
                 @custom-paste="customPaste"
             />
         </div>
@@ -17,7 +16,7 @@
 
 <script setup lang="ts">
 // 编辑器文档：https://www.wangeditor.com/v5/
-import { onBeforeUnmount, shallowRef, ref, watch, ShallowRef } from 'vue';
+import { onBeforeUnmount, shallowRef, ref, watch, ShallowRef, computed } from 'vue';
 import '@wangeditor/editor/dist/css/style.css';
 import { IDomEditor } from '@wangeditor/editor';
 import { Editor, Toolbar } from '@wangeditor/editor-for-vue';
@@ -45,14 +44,19 @@ const { mode, editorConfig, toolbarConfig } = useConfig()
 const editorRef: ShallowRef = shallowRef();
 
 // 内容 HTML
-const content = ref(props.modelValue);
+const content = computed({
+    get() {
+        return props.modelValue
+    },
+    set(newVal) {
+        emits('update:modelValue', newVal);
+    }
+})
 
 const createHandler = (editor: IDomEditor) => {
     editorRef.value = editor;
 };
-const onChange = () => {
-    emits('update:modelValue', content.value);
-};
+
 // 阻止复制的样式，保留文字、字符和排版
 const customPaste = (editor: IDomEditor, event: ClipboardEvent) => {
     const text = event.clipboardData?.getData('text/plain');
