@@ -1,20 +1,26 @@
 import type { DefineComponent } from 'vue';
-import { FormInstance, FormItemInstance } from '@arco-design/web-vue/es/form';
+import type { ColProps } from '@arco-design/web-vue';
+import type { FormInstance, FormItemInstance } from '@arco-design/web-vue/es/form';
 
-export type BaseProps = InstanceType<DefineComponent>['$props']
+export type BaseComponentProps = InstanceType<DefineComponent>['$props']
 
+export type FormProps = Omit<FormInstance['$props'], keyof BaseComponentProps | 'onSubmit' | 'model'>
+export type FormItemProps = Omit<FormItemInstance['$props'], keyof BaseComponentProps>
 export interface FieldOptions {
     value: any,
     label: string
 }
-type FormProps = Partial<Omit<FormInstance['$props'], keyof BaseProps>>
-type FormItemProps = Omit<FormItemInstance['$props'], keyof BaseProps>
-interface Field extends FormItemProps {
-    component?: any,
+export interface Field {
+    colAttrs?: ColProps,
+    formItemAtrrs?: FormItemProps,
+    component?: string,
     componentAttrs?: any,
+    label: string,
+    prop: string,
     options?: FieldOptions[]
 }
-interface Props {
+
+interface QueryFormProps {
     modelValue: any,
     formProps?: FormProps,
     fields: Field[],

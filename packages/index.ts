@@ -18,6 +18,9 @@ const install = (app: App, options: any) => {
   });
 };
 
+export type { QueryFormInstance } from './query-form'
+export {default as DxQueryForm} from './query-form'
+export {default as DxEditor} from './editor'
 export default {
   install
 };

@@ -18,18 +18,9 @@
 
 <script setup lang="ts">
 import FormItemSub from './FormItemSub.vue';
-import type { BaseProps, FieldOptions } from './type';
-import { FormItemInstance } from '@arco-design/web-vue/es/form';
-
-type FormItemProps = Omit<FormItemInstance['$props'], keyof BaseProps>
-interface Field extends FormItemProps {
-    component?: any,
-    componentAttrs?: any,
-    options?: FieldOptions[]
-}
 
 defineProps<{
-    fields: Array<Field>,
+    fields: Array<any>,
     formData: Record<string, any>,
 }>();
 </script>

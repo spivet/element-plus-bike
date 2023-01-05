@@ -39,7 +39,7 @@
                     </a-form-item>
                 </a-col>
 
-                <a-space class="bts">
+                <a-space class="dx-query-form__operation">
                     <a-button
                         type="primary"
                         @click="handleSubmit"
@@ -66,11 +66,12 @@
 </template>
 
 <script lang="ts">
-import { ref, defineComponent } from 'vue';
+import { ref, defineComponent, PropType } from 'vue';
 import FormItemSub from './form-item-sub.vue';
 import { DifferentSizeData } from './constant';
 import useFields from './hooks/useFields';
 import useForm from './hooks/useForm';
+import type { FormProps, Field } from './type';
 
 export default defineComponent({
   name: 'QueryForm',
@@ -82,21 +83,17 @@ export default defineComponent({
       type: Object,
       default: () => ({}),
     },
-    // el-form attributes
+    // a-form attributes
     formProps: {
-      type: Object,
+      type: Object as PropType<FormProps>,
       default: () => ({}),
     },
     // 表单字段
     fields: {
-      type: Array,
+      type: Array as PropType<Field[]>,
       default: () => [],
     },
-    // 表单模式：normal/search
-    mode: {
-      type: String,
-      default: 'normal',
-    },
+
     // 是否展示表单操作按钮
     showOperation: {
       type: Boolean,
@@ -184,7 +181,7 @@ export default defineComponent({
   }
 }
 
-.bts {
+.dx-query-form__operation {
     display: flex;
     flex: 1;
     align-items: center;

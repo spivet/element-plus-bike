@@ -6,5 +6,5 @@ QueryForm.install = (app: App) => {
   app.component(fixComponentName(QueryForm.name), QueryForm);
 };
 
-export type CardInstance = InstanceType<typeof QueryForm>;
+export type QueryFormInstance = InstanceType<typeof QueryForm>;
 export default QueryForm;
