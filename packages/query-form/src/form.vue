@@ -122,28 +122,22 @@ export default defineComponent({
   },
   emits: ['submit', 'reset', 'update:modelValue'],
   setup(props, {emit, expose}) {
-    const { searchForm, formData } = useForm(props, emit);
-    // const isCollapse = computed(() => formOperation.value?.isCollapse);
-    // const emit = defineEmits(['submit', 'reset']);
+    const {
+        searchForm,
+        formData,
+        handleSubmit, handleReset,
+    } = useForm(props, emit);
+    
     // 切换表单展开收起
     const isCollapse = ref(props.collapse);
     const toggleCollapse = () => {
       isCollapse.value = !isCollapse.value;
     };
-    const handleSubmit = () => {
-      emit('submit', formData.value);
-    };
-    const handleReset = () => {
-      searchForm.value?.resetFields()
-      emit('reset', formData.value);
-    };
     const { actualFields, getFormFieldProps } = useFields(props, isCollapse);
 
-    // const formData = inject<{}>(FormInjectionKey);
     expose({
       validate: searchForm.value?.validate,
     })
-
 
     return {
       searchForm, formData,
